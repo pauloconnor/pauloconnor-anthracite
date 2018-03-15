@@ -1,0 +1,29 @@
+listen_host     = '<%= scope.lookupvar('anthracite::listen_host') %>'
+listen_port     = <%= scope.lookupvar('anthracite::listen_port') %>
+opsreport_start = '<%= scope.lookupvar('anthracite::opsreport_start') %>'
+timezone        = "<%= scope.lookupvar('anthracite::timezone') %>"
+es_url          = '<%= scope.lookupvar('anthracite::es_url') %>'
+es_index        = '<%= scope.lookupvar('anthracite::es_index') %>'
+
+# list of tuples: first value of the tuple is a tag that you recommend/make
+# extra visible on the forms, and 2nd value is a user friendly explanation.
+recommended_tags = [
+]
+
+# Flexible schema:
+# use this to add (optional) attributes to your event documents.
+# forms will adjust themselves and the events will be stored accordingly.
+# i.e. you can create events that have the field set, and ones that don't. and
+# you can add it later if you have to.
+from model import Attribute
+extra_attributes = [
+    Attribute('outage_key', 'Outage key')
+]
+# "help" text to appear on forms
+helptext = {
+    'outage_key': 'key to uniquely identify particular outages'
+}
+
+plugins = []
+# you can try the vimeo plugins to get an idea:
+#plugins = ['vimeo_analytics', 'vimeo_add_forms']
